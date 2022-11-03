@@ -1,0 +1,88 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# ggols
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of ggols is to ...
+
+## Installation
+
+You can install the released version of ggols from [CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("ggols")
+```
+
+And the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("EvaMaeRey/ggols")
+```
+
+
+## ggxmean gives us all the geom_lm_* functions
+
+```{r example}
+library(tidyverse)
+library(ggxmean)
+
+ggplot(cars) +
+  aes(x = speed, y = dist,) +
+  geom_point() +
+  geom_lm() +
+  geom_lm_intercept(color = "blue") +
+  geom_lm_intercept_label(hjust = -.2) +
+  geom_lm_conf_int() +
+  geom_lm_residuals() +
+  geom_lm_fitted() +
+  geom_lm_formula()
+```
+
+# Visualization with an indicator variable
+
+```{r}
+library(ggols)
+
+ggplot(cars) +
+  aes(x = speed, y = dist, indicator = dist > 30,
+  color = dist > 30) +
+  geom_point() +
+  geom_lm_indicator() +
+  geom_lm_indicator_intercept(color = "blue") +
+  geom_lm_indicator_intercept_label(hjust = -.2) +
+  geom_lm_indicator_conf_int() +
+  geom_lm_indicator_residuals() +
+  geom_lm_indicator_fitted() +
+  geom_lm_indicator_formula() +
+  geom_lm_indicator_rsquared()
+
+
+ggplot(cars) +
+  aes(x = speed, y = dist, indicator = dist > 30,
+  color = dist > 30) +
+  geom_point() +
+  geom_lm_interaction() +
+  geom_lm_interaction_intercept(color = "blue") +
+  geom_lm_interaction_intercept_label(hjust = -.2) +
+  geom_lm_interaction_conf_int() +
+  geom_lm_interaction_residuals() +
+  geom_lm_interaction_fitted() +
+  geom_lm_interaction_formula() +
+  geom_lm_interaction_rsquared()
+```
