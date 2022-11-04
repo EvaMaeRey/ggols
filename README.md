@@ -101,3 +101,56 @@ ggplot(cars) +
 ```
 
 <img src="man/figures/README-unnamed-chunk-2-2.png" width="100%" />
+
+``` r
+
+
+ggplot(palmerpenguins::penguins) +
+  aes(x = bill_length_mm, y = bill_depth_mm, indicator = species, indicator2 = sex,
+  color = species, shape = sex) +
+  geom_point() +
+  geom_lm_indicator2() +
+  geom_lm_indicator2_conf_int() + # buggy
+  geom_lm_indicator2_residuals() +
+  geom_lm_indicator2_fitted() +
+  geom_lm_indicator2_formula() +
+  geom_lm_indicator2_rsquared() +
+  NULL
+#> Warning: Removed 11 rows containing non-finite values (stat_lmindicator2).
+#> Warning: Removed 2 rows containing non-finite values (stat_olsconfintind2).
+#> Warning: Removed 11 rows containing non-finite values (stat_lmindicator2).
+#> Removed 11 rows containing non-finite values (stat_lmindicator2).
+#> Warning: Removed 11 rows containing non-finite values (stat_olsind2formula).
+#> Warning: Removed 11 rows containing non-finite values (stat_olsindrsquared).
+#> Warning: Removed 11 rows containing missing values (geom_point).
+#> Warning in max(ids, na.rm = TRUE): no non-missing arguments to max; returning -
+#> Inf
+
+#> Warning in max(ids, na.rm = TRUE): no non-missing arguments to max; returning -
+#> Inf
+```
+
+<img src="man/figures/README-unnamed-chunk-2-3.png" width="100%" />
+
+``` r
+
+last_plot() + 
+  geom_lm_indicator2_intercept(color = "blue") +
+  geom_lm_indicator2_intercept_label(hjust = -.2)
+#> Warning: Removed 11 rows containing non-finite values (stat_lmindicator2).
+#> Warning: Removed 2 rows containing non-finite values (stat_olsconfintind2).
+#> Warning: Removed 11 rows containing non-finite values (stat_lmindicator2).
+#> Removed 11 rows containing non-finite values (stat_lmindicator2).
+#> Warning: Removed 11 rows containing non-finite values (stat_olsind2formula).
+#> Warning: Removed 11 rows containing non-finite values (stat_olsindrsquared).
+#> Warning: Removed 2 rows containing non-finite values (stat_olsinterceptind).
+#> Removed 2 rows containing non-finite values (stat_olsinterceptind).
+#> Warning: Removed 11 rows containing missing values (geom_point).
+#> Warning in max(ids, na.rm = TRUE): no non-missing arguments to max; returning -
+#> Inf
+
+#> Warning in max(ids, na.rm = TRUE): no non-missing arguments to max; returning -
+#> Inf
+```
+
+<img src="man/figures/README-unnamed-chunk-2-4.png" width="100%" />

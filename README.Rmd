@@ -85,4 +85,22 @@ ggplot(cars) +
   geom_lm_interaction_fitted() +
   geom_lm_interaction_formula() +
   geom_lm_interaction_rsquared()
+
+
+ggplot(palmerpenguins::penguins) +
+  aes(x = bill_length_mm, y = bill_depth_mm, indicator = species, indicator2 = sex,
+  color = species, shape = sex) +
+  geom_point() +
+  geom_lm_indicator2() +
+  geom_lm_indicator2_conf_int() + # buggy
+  geom_lm_indicator2_residuals() +
+  geom_lm_indicator2_fitted() +
+  geom_lm_indicator2_formula() +
+  geom_lm_indicator2_rsquared() +
+  NULL
+
+last_plot() + 
+  geom_lm_indicator2_intercept(color = "blue") +
+  geom_lm_indicator2_intercept_label(hjust = -.2)
+
 ```
