@@ -21,10 +21,12 @@ compute_panel_ols_ind_label <- function(data, scales) {
                             dummies,
                             " + ",
                             model$coefficients[1] %>%
-                              good_digits() %>%
-                              stringr::str_wrap(30) # good idea not working.
+                              good_digits()
 
-             ))
+             ) %>%
+               stringr::str_wrap(50)
+
+             )
 
 }
 

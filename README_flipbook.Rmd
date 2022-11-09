@@ -1,8 +1,59 @@
 ---
-output: github_document
+title: "The goal of ggols is to ..."
+subtitle: ""
+author: "Gina Reynolds"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: [default, hygge, ninjutsu]
+    nature:
+      ratio: 16:9
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
 ---
 
+
+```{r, include = F}
+# This is the recommended set up for flipbooks
+# you might think about setting cache to TRUE as you gain practice --- building flipbooks from scratch can be time consuming
+knitr::opts_chunk$set(fig.width = 6, fig.height = 4, message = F, warning = FALSE, comment = "", cache = F)
+
+options(tibble.print_min = 55)
+options(knitr.duplicate.label = "allow")
+options(width=300) # prevents data wrapping
+```
+
+
+```{css, eval = TRUE, echo = FALSE}
+.remark-code{line-height: 1.5; font-size: 70%}
+
+@media print {
+  .has-continuation {
+    display: block;
+  }
+}
+
+code.r.hljs.remark-code{
+  position: relative;
+  overflow-x: hidden;
+}
+
+
+code.r.hljs.remark-code:hover{
+  overflow-x:visible;
+  width: 500px;
+  border-style: solid;
+}
+```
+
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
+---
+
+
+
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -36,15 +87,22 @@ And the development version from [GitHub](https://github.com/) with:
 devtools::install_github("EvaMaeRey/ggols")
 ```
 
+---
 
 ## ggxmean gives us all the geom_lm_* functions
 
-```{r example}
+---
+
+
+`r flipbookr::chunk_reveal("example", left_assign = "detect")`
+
+
+```{r example, include = FALSE}
 library(tidyverse)
 library(ggxmean)
 
-ggplot(cars) +
-  aes(x = speed, y = dist,) +
+ggplot(palmerpenguins::penguins) +
+  aes(x = bill_depth_mm, y = bill_length_mm) +
   geom_point() +
   geom_lm() +
   geom_lm_intercept(color = "blue") +
@@ -53,13 +111,20 @@ ggplot(cars) +
   geom_lm_residuals() +
   geom_lm_fitted() +
   geom_lm_formula() + 
-  ggols:::geom_lm_rsquared() #should be moved to ggxmean
+  ggols:::geom_lm_rsquared()
 ```
 
+---
 
 # Visualization, adding indicator var
 
-```{r indicator}
+---
+
+
+`r flipbookr::chunk_reveal("indicator", left_assign = "detect")`
+
+
+```{r indicator, include = FALSE}
 library(ggols)
 
 ggplot(cars) +
@@ -77,10 +142,18 @@ ggplot(cars) +
 ```
 
 
-# Visualization, adding indicator interaction
+---
+
+# Visualization, adding x*indicator interaction
 
 
-```{r interaction}
+---
+
+
+`r flipbookr::chunk_reveal("interaction", left_assign = "detect")`
+
+
+```{r interaction, include = FALSE}
 ggplot(cars) +
   aes(x = speed, y = dist, indicator = dist > 30,
   color = dist > 30) +
@@ -95,11 +168,18 @@ ggplot(cars) +
   geom_lm_interaction_rsquared()
 ```
 
+---
 
-# Visualization, and two indicator variables
+# Visualization, and two indicator variables (parallel slopes)
 
 
-```{r int2}
+---
+
+
+`r flipbookr::chunk_reveal("int2", left_assign = "detect")`
+
+
+```{r int2, include = FALSE}
 ggplot(palmerpenguins::penguins) +
   aes(x = bill_length_mm, y = bill_depth_mm, 
       indicator = species, indicator2 = sex,
@@ -112,7 +192,14 @@ ggplot(palmerpenguins::penguins) +
   geom_lm_indicator2_formula() +
   geom_lm_indicator2_rsquared() +
   NULL
+```
 
+---
+
+`r flipbookr::chunk_reveal("int3", left_assign = "detect")`
+
+
+```{r int3, include = F}
 last_plot() + 
   geom_lm_indicator2_intercept(color = "blue") +
   geom_lm_indicator2_intercept_label(hjust = -.2)
