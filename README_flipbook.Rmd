@@ -111,7 +111,7 @@ ggplot(palmerpenguins::penguins) +
   geom_lm_residuals() +
   geom_lm_fitted() +
   geom_lm_formula() + 
-  ggols:::geom_lm_rsquared()
+  ggols:::geom_lm_rsquared() #should be moved to ggxmean
 ```
 
 ---

@@ -33,6 +33,7 @@ StatLmsq <- ggplot2::ggproto("StatLmsq",
 #' @export
 #'
 #' @examples
+#' library(ggplot2)
 #' ggplot(cars) +
 #' aes(x = speed, y = dist) +
 #' geom_point() +
