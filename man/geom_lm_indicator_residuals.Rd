@@ -44,7 +44,7 @@ ggplot(palmerpenguins::penguins) +
   aes(y = body_mass_g ) +
   geom_point() + aes(color = species) +
   aes(indicator = species) +
-  geom_lm_indicator() +
+  geom_lm_indicator(formula = y ~ x * indicator) +
   geom_lm_indicator_formula() +
   geom_lm_indicator_fitted(color = "blue") +
   geom_lm_indicator_residuals(color = "red") +

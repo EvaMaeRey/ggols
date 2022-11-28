@@ -1,36 +1,40 @@
+compute_panel_ind_prediction <- function(data, scales,
+                                         formula = y ~ x + indicator,
+
+         level = .95,
+         num_breaks = 100) {
+
+  model <- lm(formula = formula,
+              data = data)
+
+  new_x_df <- seq(min(data$x), max(data$x),
+                  length.out = num_breaks) %>%
+    data.frame(x = .)
+
+  predict(model,
+          newdata = data,
+          interval = "confidence",
+          level = level
+  ) ->
+    predict_df
+
+  data.frame(x = data$x,
+             xend = data$x,
+             xmin = data$x,
+             xmax = data$x,
+             y = predict_df[,2],
+             yend = predict_df[,3],
+             ymin = predict_df[,2],
+             ymax = predict_df[,3],
+             alpha = .3,
+             indicator = data$indicator)
+}
+
+
 #### confint #####
 StatOlsconfintind <- ggplot2::ggproto("StatOlsconfintind",
                                    ggplot2::Stat,
-                                   compute_panel = function(data, scales,
-                                                            level = .95,
-                                                            num_breaks = 100) {
-
-                                     model <- lm(y ~ x + indicator,
-                                                 data = data)
-
-                                     new_x_df <- seq(min(data$x), max(data$x),
-                                                     length.out = num_breaks) %>%
-                                       data.frame(x = .)
-
-                                     predict(model,
-                                             newdata = data,
-                                             interval = "confidence",
-                                             level = level
-                                     ) ->
-                                       predict_df
-
-                                     data.frame(x = data$x,
-                                                xend = data$x,
-                                                xmin = data$x,
-                                                xmax = data$x,
-                                                y = predict_df[,2],
-                                                yend = predict_df[,3],
-                                                ymin = predict_df[,2],
-                                                ymax = predict_df[,3],
-                                                alpha = .3,
-                                                indicator = data$indicator)
-                                   },
-
+                                   compute_panel = compute_panel_ind_prediction,
                                    required_aes = c("x", "y", "indicator"),
                                    default_aes = ggplot2::aes(group = ggplot2::after_stat(indicator))
 )

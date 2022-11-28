@@ -20,8 +20,7 @@ compute_panel_ols_ind2_label <- function(data, scales) {
                             "x + ",
                             dummies,
                             " + ",
-                            model$coefficients[1] %>%
-                              good_digits()
+                            model$coefficients[1] %>% good_digits()
 
              ) %>%
                stringr::str_wrap(50)

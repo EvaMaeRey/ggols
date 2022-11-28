@@ -4,7 +4,7 @@
 \alias{compute_panel_ols_ind_rsquared}
 \title{Title}
 \usage{
-compute_panel_ols_ind_rsquared(data, scales)
+compute_panel_ols_ind_rsquared(data, scales, formula = y ~ x + indicator)
 }
 \arguments{
 \item{scales}{}

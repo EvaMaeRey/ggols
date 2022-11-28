@@ -126,3 +126,19 @@ last_plot() +
 ```
 
 <img src="man/figures/README-int2-2.png" width="100%" />
+
+``` r
+ggplot(palmerpenguins::penguins) +
+  aes(x = bill_length_mm, y = bill_depth_mm, 
+      indicator = species, 
+      color = species, shape = sex) +
+  geom_point() +
+  geom_lm_indicator(formula = y ~ I(x^3) + I(x^2) + x + indicator) 
+```
+
+<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
+
+``` r
+
+# the implementation should change; curves expose problem. The non-smoothness shows prediction not made along parts not supported with data
+```

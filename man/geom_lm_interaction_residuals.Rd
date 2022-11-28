@@ -13,28 +13,14 @@ geom_lm_interaction_residuals(
   inherit.aes = TRUE,
   ...
 )
-
-geom_lm_interaction_residuals(
-  mapping = NULL,
-  data = NULL,
-  position = "identity",
-  na.rm = FALSE,
-  show.legend = NA,
-  inherit.aes = TRUE,
-  ...
-)
 }
 \arguments{
 \item{...}{}
 }
 \value{
 
-
-
 }
 \description{
-Title
-
 Title
 }
 \examples{

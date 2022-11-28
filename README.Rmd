@@ -117,3 +117,15 @@ last_plot() +
   geom_lm_indicator2_intercept(color = "blue") +
   geom_lm_indicator2_intercept_label(hjust = -.2)
 ```
+
+```{r}
+ggplot(palmerpenguins::penguins) +
+  aes(x = bill_length_mm, y = bill_depth_mm, 
+      indicator = species, 
+      color = species, shape = sex) +
+  geom_point() +
+  geom_lm_indicator(formula = y ~ I(x^3) + I(x^2) + x + indicator) 
+
+# the implementation should change; curves expose problem. The non-smoothness shows prediction not made along parts not supported with data
+
+```

@@ -1,6 +1,6 @@
-compute_panel_ols_ind <- function(data, scales) {
+compute_panel_ols_ind <- function(data, scales, formula = y ~ x + indicator) {
 
-  model <- lm(y ~ x + indicator,
+  model <- lm(formula = formula,
               data = data)
 
   data.frame(x = data$x,
@@ -14,6 +14,7 @@ compute_panel_ols_ind <- function(data, scales) {
 StatLmindicator <- ggplot2::ggproto("StatLmindicator",
                                       ggplot2::Stat,
                                       compute_panel = compute_panel_ols_ind,
+
                                       required_aes = c("x", "y", "indicator"),
                                       default_aes = ggplot2::aes(group = ggplot2::after_stat(indicator))
 )
@@ -32,6 +33,17 @@ StatLmindicator <- ggplot2::ggproto("StatLmindicator",
 #' @export
 #'
 #' @examples
+#' ggplot(palmerpenguins::penguins) +
+#'   aes(x = flipper_length_mm ) +
+#'   aes(y = body_mass_g ) +
+#'   geom_point() + aes(color = species) +
+#'   aes(indicator = species) +
+#'   geom_lm_indicator(formula = y ~ x + indicator) +
+#'   geom_lm_indicator_formula() +
+#'   geom_lm_indicator_fitted(color = "blue") +
+#'   geom_lm_indicator_residuals(color = "red") +
+#'   geom_lm_indicator_rsquared()
+#'
 geom_lm_indicator <- function(mapping = NULL, data = NULL,
                                 position = "identity", na.rm = FALSE,
                                 show.legend = NA,
@@ -130,7 +142,7 @@ geom_lm_indicator_residuals <- function(mapping = NULL, data = NULL,
 #'   aes(y = body_mass_g ) +
 #'   geom_point() + aes(color = species) +
 #'   aes(indicator = species) +
-#'   geom_lm_indicator() +
+#'   geom_lm_indicator(formula = y ~ x * indicator) +
 #'   geom_lm_indicator_formula() +
 #'   geom_lm_indicator_fitted(color = "blue") +
 #'   geom_lm_indicator_residuals(color = "red") +

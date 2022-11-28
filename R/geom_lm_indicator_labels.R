@@ -1,6 +1,8 @@
-compute_panel_ols_ind_label <- function(data, scales) {
+compute_panel_ols_ind_label <- function(data,
+                                        scales,
+                                        formula = y ~ x + indicator) {
 
-  model <- lm(y ~ x + indicator,
+  model <- lm(formula = formula,
               data = data)
 
   data.frame(names = model[[1]] %>% names(),
@@ -81,9 +83,10 @@ geom_lm_indicator_formula <- function(mapping = NULL, data = NULL,
 #'   mutate(indicator = dist>15) %>%
 #'   rename(x = speed, y = dist) %>%
 #'   compute_panel_ols_ind_rsquared()
-compute_panel_ols_ind_rsquared <- function(data, scales) {
+compute_panel_ols_ind_rsquared <- function(data, scales,
+                                           formula = y ~ x + indicator) {
 
-  model <- lm(y ~ x + indicator,
+  model <- lm(formula = formula,
               data = data)
 
   data.frame(x = mean(data$x),

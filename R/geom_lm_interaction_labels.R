@@ -1,42 +1,4 @@
-compute_panel_ols_int_label <- function(data, scales) {
 
-  model <- lm(y ~ x*indicator,
-              data = data)
-
-  data.frame(names = model[[1]] %>% names(),
-             coeff = model[[1]]) %>%
-    tibble::tibble() %>%
-    dplyr::slice(-1, -2) %>%
-    dplyr::mutate(equation = paste0(coeff %>% good_digits(), "*", names)) %>%
-    dplyr::pull(equation) %>%
-    paste(collapse = " + ") ->
-    dummies
-
-
-  data.frame(x = mean(data$x),
-             y = mean(data$y),
-             label = paste0("y = ",
-                            model$coefficients[2] %>% good_digits(),
-                            "x + ",
-                            dummies,
-                            " + ",
-                            model$coefficients[1] %>%
-                              good_digits() %>%
-                              stringr::str_wrap(30)
-                            ) %>%
-    stringr::str_wrap(50)
-
-    )
-
-}
-
-
-
-StatOlsintformula <- ggplot2::ggproto("StatOlsintformula",
-                                      ggplot2::Stat,
-                                      compute_panel = compute_panel_ols_int_label,
-                                      required_aes = c("x", "y", "indicator")
-)
 
 
 #' Title
@@ -56,48 +18,18 @@ StatOlsintformula <- ggplot2::ggproto("StatOlsintformula",
 geom_lm_interaction_formula <- function(mapping = NULL, data = NULL,
                                         position = "identity", na.rm = FALSE, show.legend = NA,
                                         inherit.aes = TRUE, ...) {
-  ggplot2::layer(
-    stat = StatOlsintformula, geom = ggplot2::GeomLabel, data = data, mapping = mapping,
-    position = position, show.legend = show.legend, inherit.aes = inherit.aes,
-    params = list(na.rm = na.rm, ...)
-  )
-}
-
-
-
-
-#' Title
-#'
-#' @param data
-#' @param scales
-#'
-#' @return
-#' @export
-#'
-#' @examples
-#' ###### R-squared
-#' library(tidyverse)
-#' cars %>%
-#'   mutate(indicator = dist>15) %>%
-#'   rename(x = speed, y = dist) %>%
-#'   compute_panel_ols_int_rsquared()
-compute_panel_ols_int_rsquared <- function(data, scales) {
-
-  model <- lm(y ~ x*indicator,
-              data = data)
-
-  data.frame(x = mean(data$x),
-             y = quantile(data$y, .8),
-             label = summary(model)$r.squared %>%
-               good_digits() %>% paste0("R-squared = ",.))
+  geom_lm_indicator_formula(formula = y ~ x*indicator,
+                              mapping = mapping,
+                              data = data,
+                              position = "identity",
+                              na.rm = na.rm,
+                              show.legend = show.legend,
+                              inherit.aes = inherit.aes, ...)
 
 }
 
-StatOlsintrsquared <- ggplot2::ggproto("StatOlsintrsquared",
-                                      ggplot2::Stat,
-                                      compute_panel = compute_panel_ols_int_rsquared,
-                                      required_aes = c("x", "y", "indicator")
-                                      )
+
+
 
 
 #' Title
@@ -117,11 +49,14 @@ StatOlsintrsquared <- ggplot2::ggproto("StatOlsintrsquared",
 geom_lm_interaction_rsquared <- function(mapping = NULL, data = NULL,
                                         position = "identity", na.rm = FALSE, show.legend = NA,
                                         inherit.aes = TRUE, ...) {
-  ggplot2::layer(
-    stat = StatOlsintrsquared, geom = ggplot2::GeomLabel, data = data, mapping = mapping,
-    position = position, show.legend = show.legend, inherit.aes = inherit.aes,
-    params = list(na.rm = na.rm, ...)
-  )
+  geom_lm_indicator_rsquared(formula = y ~ x*indicator,
+                            mapping = mapping,
+                            data = data,
+                            position = "identity",
+                            na.rm = na.rm,
+                            show.legend = show.legend,
+                            inherit.aes = inherit.aes, ...)
+
 }
 
 
