@@ -9,9 +9,6 @@ compute_panel_ols_rsquared(data, scales)
 \arguments{
 \item{scales}{}
 }
-\value{
-
-}
 \description{
 Title
 }
@@ -19,7 +16,7 @@ Title
 ###### R-squared
 library(tidyverse)
 cars \%>\%
-  mutate(indicator = dist>15) \%>\%
+  mutate(cat = dist>15) \%>\%
   rename(x = speed, y = dist) \%>\%
-  compute_panel_ols_ind_rsquared()
+  compute_panel_ols_cat_rsquared()
 }

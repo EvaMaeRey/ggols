@@ -17,9 +17,6 @@ geom_lm_square(
 \arguments{
 \item{...}{}
 }
-\value{
-
-}
 \description{
 Title
 }

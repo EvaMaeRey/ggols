@@ -9,9 +9,6 @@ good_digits(x, digits = 3)
 \arguments{
 \item{digits}{}
 }
-\value{
-
-}
 \description{
 Title
 }

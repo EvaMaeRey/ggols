@@ -17,9 +17,6 @@ geom_lm_z(
 \arguments{
 \item{...}{}
 }
-\value{
-
-}
 \description{
 Title
 }

@@ -372,7 +372,7 @@ ggplot(palmerpenguins::penguins) +
 
 ---
 
-# Visualization, adding indicator var
+# Visualization, adding cat var
 
 ---
 
@@ -380,14 +380,14 @@ ggplot(palmerpenguins::penguins) +
 count: false
  
 
-.panel1-indicator-auto[
+.panel1-cat-auto[
 
 ```r
 *library(ggols)
 ```
 ]
  
-.panel2-indicator-auto[
+.panel2-cat-auto[
 
 ]
 
@@ -395,7 +395,7 @@ count: false
 count: false
  
 
-.panel1-indicator-auto[
+.panel1-cat-auto[
 
 ```r
 library(ggols)
@@ -404,247 +404,247 @@ library(ggols)
 ```
 ]
  
-.panel2-indicator-auto[
-&lt;img src="man/figures/README-indicator_auto_02_output-1.png" width="100%" /&gt;
+.panel2-cat-auto[
+&lt;img src="man/figures/README-cat_auto_02_output-1.png" width="100%" /&gt;
 ]
 
 ---
 count: false
  
 
-.panel1-indicator-auto[
+.panel1-cat-auto[
 
 ```r
 library(ggols)
 
 ggplot(cars) +
-* aes(x = speed, y = dist, indicator = dist &gt; 30,
+* aes(x = speed, y = dist, cat = dist &gt; 30,
 * color = dist &gt; 30)
 ```
 ]
  
-.panel2-indicator-auto[
-&lt;img src="man/figures/README-indicator_auto_03_output-1.png" width="100%" /&gt;
+.panel2-cat-auto[
+&lt;img src="man/figures/README-cat_auto_03_output-1.png" width="100%" /&gt;
 ]
 
 ---
 count: false
  
 
-.panel1-indicator-auto[
+.panel1-cat-auto[
 
 ```r
 library(ggols)
 
 ggplot(cars) +
-  aes(x = speed, y = dist, indicator = dist &gt; 30,
+  aes(x = speed, y = dist, cat = dist &gt; 30,
   color = dist &gt; 30) +
 * geom_point()
 ```
 ]
  
-.panel2-indicator-auto[
-&lt;img src="man/figures/README-indicator_auto_04_output-1.png" width="100%" /&gt;
+.panel2-cat-auto[
+&lt;img src="man/figures/README-cat_auto_04_output-1.png" width="100%" /&gt;
 ]
 
 ---
 count: false
  
 
-.panel1-indicator-auto[
+.panel1-cat-auto[
 
 ```r
 library(ggols)
 
 ggplot(cars) +
-  aes(x = speed, y = dist, indicator = dist &gt; 30,
+  aes(x = speed, y = dist, cat = dist &gt; 30,
   color = dist &gt; 30) +
   geom_point() +
-* geom_lm_indicator()
+* geom_lm_cat()
 ```
 ]
  
-.panel2-indicator-auto[
-&lt;img src="man/figures/README-indicator_auto_05_output-1.png" width="100%" /&gt;
+.panel2-cat-auto[
+&lt;img src="man/figures/README-cat_auto_05_output-1.png" width="100%" /&gt;
 ]
 
 ---
 count: false
  
 
-.panel1-indicator-auto[
+.panel1-cat-auto[
 
 ```r
 library(ggols)
 
 ggplot(cars) +
-  aes(x = speed, y = dist, indicator = dist &gt; 30,
+  aes(x = speed, y = dist, cat = dist &gt; 30,
   color = dist &gt; 30) +
   geom_point() +
-  geom_lm_indicator() +
-* geom_lm_indicator_intercept(color = "blue")
+  geom_lm_cat() +
+* geom_lm_cat_intercept(color = "blue")
 ```
 ]
  
-.panel2-indicator-auto[
-&lt;img src="man/figures/README-indicator_auto_06_output-1.png" width="100%" /&gt;
+.panel2-cat-auto[
+&lt;img src="man/figures/README-cat_auto_06_output-1.png" width="100%" /&gt;
 ]
 
 ---
 count: false
  
 
-.panel1-indicator-auto[
+.panel1-cat-auto[
 
 ```r
 library(ggols)
 
 ggplot(cars) +
-  aes(x = speed, y = dist, indicator = dist &gt; 30,
+  aes(x = speed, y = dist, cat = dist &gt; 30,
   color = dist &gt; 30) +
   geom_point() +
-  geom_lm_indicator() +
-  geom_lm_indicator_intercept(color = "blue") +
-* geom_lm_indicator_intercept_label(hjust = -.2)
+  geom_lm_cat() +
+  geom_lm_cat_intercept(color = "blue") +
+* geom_lm_cat_intercept_label(hjust = -.2)
 ```
 ]
  
-.panel2-indicator-auto[
-&lt;img src="man/figures/README-indicator_auto_07_output-1.png" width="100%" /&gt;
+.panel2-cat-auto[
+&lt;img src="man/figures/README-cat_auto_07_output-1.png" width="100%" /&gt;
 ]
 
 ---
 count: false
  
 
-.panel1-indicator-auto[
+.panel1-cat-auto[
 
 ```r
 library(ggols)
 
 ggplot(cars) +
-  aes(x = speed, y = dist, indicator = dist &gt; 30,
+  aes(x = speed, y = dist, cat = dist &gt; 30,
   color = dist &gt; 30) +
   geom_point() +
-  geom_lm_indicator() +
-  geom_lm_indicator_intercept(color = "blue") +
-  geom_lm_indicator_intercept_label(hjust = -.2) +
-* geom_lm_indicator_conf_int()
+  geom_lm_cat() +
+  geom_lm_cat_intercept(color = "blue") +
+  geom_lm_cat_intercept_label(hjust = -.2) +
+* geom_lm_cat_conf_int()
 ```
 ]
  
-.panel2-indicator-auto[
-&lt;img src="man/figures/README-indicator_auto_08_output-1.png" width="100%" /&gt;
+.panel2-cat-auto[
+&lt;img src="man/figures/README-cat_auto_08_output-1.png" width="100%" /&gt;
 ]
 
 ---
 count: false
  
 
-.panel1-indicator-auto[
+.panel1-cat-auto[
 
 ```r
 library(ggols)
 
 ggplot(cars) +
-  aes(x = speed, y = dist, indicator = dist &gt; 30,
+  aes(x = speed, y = dist, cat = dist &gt; 30,
   color = dist &gt; 30) +
   geom_point() +
-  geom_lm_indicator() +
-  geom_lm_indicator_intercept(color = "blue") +
-  geom_lm_indicator_intercept_label(hjust = -.2) +
-  geom_lm_indicator_conf_int() +
-* geom_lm_indicator_residuals()
+  geom_lm_cat() +
+  geom_lm_cat_intercept(color = "blue") +
+  geom_lm_cat_intercept_label(hjust = -.2) +
+  geom_lm_cat_conf_int() +
+* geom_lm_cat_residuals()
 ```
 ]
  
-.panel2-indicator-auto[
-&lt;img src="man/figures/README-indicator_auto_09_output-1.png" width="100%" /&gt;
+.panel2-cat-auto[
+&lt;img src="man/figures/README-cat_auto_09_output-1.png" width="100%" /&gt;
 ]
 
 ---
 count: false
  
 
-.panel1-indicator-auto[
+.panel1-cat-auto[
 
 ```r
 library(ggols)
 
 ggplot(cars) +
-  aes(x = speed, y = dist, indicator = dist &gt; 30,
+  aes(x = speed, y = dist, cat = dist &gt; 30,
   color = dist &gt; 30) +
   geom_point() +
-  geom_lm_indicator() +
-  geom_lm_indicator_intercept(color = "blue") +
-  geom_lm_indicator_intercept_label(hjust = -.2) +
-  geom_lm_indicator_conf_int() +
-  geom_lm_indicator_residuals() +
-* geom_lm_indicator_fitted()
+  geom_lm_cat() +
+  geom_lm_cat_intercept(color = "blue") +
+  geom_lm_cat_intercept_label(hjust = -.2) +
+  geom_lm_cat_conf_int() +
+  geom_lm_cat_residuals() +
+* geom_lm_cat_fitted()
 ```
 ]
  
-.panel2-indicator-auto[
-&lt;img src="man/figures/README-indicator_auto_10_output-1.png" width="100%" /&gt;
+.panel2-cat-auto[
+&lt;img src="man/figures/README-cat_auto_10_output-1.png" width="100%" /&gt;
 ]
 
 ---
 count: false
  
 
-.panel1-indicator-auto[
+.panel1-cat-auto[
 
 ```r
 library(ggols)
 
 ggplot(cars) +
-  aes(x = speed, y = dist, indicator = dist &gt; 30,
+  aes(x = speed, y = dist, cat = dist &gt; 30,
   color = dist &gt; 30) +
   geom_point() +
-  geom_lm_indicator() +
-  geom_lm_indicator_intercept(color = "blue") +
-  geom_lm_indicator_intercept_label(hjust = -.2) +
-  geom_lm_indicator_conf_int() +
-  geom_lm_indicator_residuals() +
-  geom_lm_indicator_fitted() +
-* geom_lm_indicator_formula()
+  geom_lm_cat() +
+  geom_lm_cat_intercept(color = "blue") +
+  geom_lm_cat_intercept_label(hjust = -.2) +
+  geom_lm_cat_conf_int() +
+  geom_lm_cat_residuals() +
+  geom_lm_cat_fitted() +
+* geom_lm_cat_formula()
 ```
 ]
  
-.panel2-indicator-auto[
-&lt;img src="man/figures/README-indicator_auto_11_output-1.png" width="100%" /&gt;
+.panel2-cat-auto[
+&lt;img src="man/figures/README-cat_auto_11_output-1.png" width="100%" /&gt;
 ]
 
 ---
 count: false
  
 
-.panel1-indicator-auto[
+.panel1-cat-auto[
 
 ```r
 library(ggols)
 
 ggplot(cars) +
-  aes(x = speed, y = dist, indicator = dist &gt; 30,
+  aes(x = speed, y = dist, cat = dist &gt; 30,
   color = dist &gt; 30) +
   geom_point() +
-  geom_lm_indicator() +
-  geom_lm_indicator_intercept(color = "blue") +
-  geom_lm_indicator_intercept_label(hjust = -.2) +
-  geom_lm_indicator_conf_int() +
-  geom_lm_indicator_residuals() +
-  geom_lm_indicator_fitted() +
-  geom_lm_indicator_formula() +
-* geom_lm_indicator_rsquared()
+  geom_lm_cat() +
+  geom_lm_cat_intercept(color = "blue") +
+  geom_lm_cat_intercept_label(hjust = -.2) +
+  geom_lm_cat_conf_int() +
+  geom_lm_cat_residuals() +
+  geom_lm_cat_fitted() +
+  geom_lm_cat_formula() +
+* geom_lm_cat_rsquared()
 ```
 ]
  
-.panel2-indicator-auto[
-&lt;img src="man/figures/README-indicator_auto_12_output-1.png" width="100%" /&gt;
+.panel2-cat-auto[
+&lt;img src="man/figures/README-cat_auto_12_output-1.png" width="100%" /&gt;
 ]
 
 &lt;style&gt;
-.panel1-indicator-auto {
+.panel1-cat-auto {
   color: black;
   width: 38.6060606060606%;
   hight: 32%;
@@ -652,7 +652,7 @@ ggplot(cars) +
   padding-left: 1%;
   font-size: 80%
 }
-.panel2-indicator-auto {
+.panel2-cat-auto {
   color: black;
   width: 59.3939393939394%;
   hight: 32%;
@@ -660,7 +660,7 @@ ggplot(cars) +
   padding-left: 1%;
   font-size: 80%
 }
-.panel3-indicator-auto {
+.panel3-cat-auto {
   color: black;
   width: NA%;
   hight: 33%;
@@ -678,7 +678,7 @@ ggplot(cars) +
 
 ---
 
-# Visualization, adding x*indicator interaction
+# Visualization, adding x*cat interaction
 
 
 ---
@@ -706,7 +706,7 @@ count: false
 
 ```r
 ggplot(cars) +
-* aes(x = speed, y = dist, indicator = dist &gt; 30,
+* aes(x = speed, y = dist, cat = dist &gt; 30,
 * color = dist &gt; 30)
 ```
 ]
@@ -723,7 +723,7 @@ count: false
 
 ```r
 ggplot(cars) +
-  aes(x = speed, y = dist, indicator = dist &gt; 30,
+  aes(x = speed, y = dist, cat = dist &gt; 30,
   color = dist &gt; 30) +
 * geom_point()
 ```
@@ -741,7 +741,7 @@ count: false
 
 ```r
 ggplot(cars) +
-  aes(x = speed, y = dist, indicator = dist &gt; 30,
+  aes(x = speed, y = dist, cat = dist &gt; 30,
   color = dist &gt; 30) +
   geom_point() +
 * geom_lm_interaction()
@@ -760,7 +760,7 @@ count: false
 
 ```r
 ggplot(cars) +
-  aes(x = speed, y = dist, indicator = dist &gt; 30,
+  aes(x = speed, y = dist, cat = dist &gt; 30,
   color = dist &gt; 30) +
   geom_point() +
   geom_lm_interaction() +
@@ -780,7 +780,7 @@ count: false
 
 ```r
 ggplot(cars) +
-  aes(x = speed, y = dist, indicator = dist &gt; 30,
+  aes(x = speed, y = dist, cat = dist &gt; 30,
   color = dist &gt; 30) +
   geom_point() +
   geom_lm_interaction() +
@@ -801,7 +801,7 @@ count: false
 
 ```r
 ggplot(cars) +
-  aes(x = speed, y = dist, indicator = dist &gt; 30,
+  aes(x = speed, y = dist, cat = dist &gt; 30,
   color = dist &gt; 30) +
   geom_point() +
   geom_lm_interaction() +
@@ -823,7 +823,7 @@ count: false
 
 ```r
 ggplot(cars) +
-  aes(x = speed, y = dist, indicator = dist &gt; 30,
+  aes(x = speed, y = dist, cat = dist &gt; 30,
   color = dist &gt; 30) +
   geom_point() +
   geom_lm_interaction() +
@@ -846,7 +846,7 @@ count: false
 
 ```r
 ggplot(cars) +
-  aes(x = speed, y = dist, indicator = dist &gt; 30,
+  aes(x = speed, y = dist, cat = dist &gt; 30,
   color = dist &gt; 30) +
   geom_point() +
   geom_lm_interaction() +
@@ -870,7 +870,7 @@ count: false
 
 ```r
 ggplot(cars) +
-  aes(x = speed, y = dist, indicator = dist &gt; 30,
+  aes(x = speed, y = dist, cat = dist &gt; 30,
   color = dist &gt; 30) +
   geom_point() +
   geom_lm_interaction() +
@@ -895,7 +895,7 @@ count: false
 
 ```r
 ggplot(cars) +
-  aes(x = speed, y = dist, indicator = dist &gt; 30,
+  aes(x = speed, y = dist, cat = dist &gt; 30,
   color = dist &gt; 30) +
   geom_point() +
   geom_lm_interaction() +
@@ -947,7 +947,7 @@ ggplot(cars) +
 
 ---
 
-# Visualization, and two indicator variables (parallel slopes)
+# Visualization, and two cat variables (parallel slopes)
 
 
 ---
@@ -976,7 +976,7 @@ count: false
 ```r
 ggplot(palmerpenguins::penguins) +
 * aes(x = bill_length_mm, y = bill_depth_mm,
-*     indicator = species, indicator2 = sex,
+*     cat = species, cat2 = sex,
 *     color = species, shape = sex)
 ```
 ]
@@ -994,7 +994,7 @@ count: false
 ```r
 ggplot(palmerpenguins::penguins) +
   aes(x = bill_length_mm, y = bill_depth_mm,
-      indicator = species, indicator2 = sex,
+      cat = species, cat2 = sex,
       color = species, shape = sex) +
 * geom_point()
 ```
@@ -1013,10 +1013,10 @@ count: false
 ```r
 ggplot(palmerpenguins::penguins) +
   aes(x = bill_length_mm, y = bill_depth_mm,
-      indicator = species, indicator2 = sex,
+      cat = species, cat2 = sex,
       color = species, shape = sex) +
   geom_point() +
-* geom_lm_indicator2()
+* geom_lm_cat2()
 ```
 ]
  
@@ -1033,11 +1033,11 @@ count: false
 ```r
 ggplot(palmerpenguins::penguins) +
   aes(x = bill_length_mm, y = bill_depth_mm,
-      indicator = species, indicator2 = sex,
+      cat = species, cat2 = sex,
       color = species, shape = sex) +
   geom_point() +
-  geom_lm_indicator2() +
-* geom_lm_indicator2_conf_int()
+  geom_lm_cat2() +
+* geom_lm_cat2_conf_int()
 ```
 ]
  
@@ -1054,12 +1054,12 @@ count: false
 ```r
 ggplot(palmerpenguins::penguins) +
   aes(x = bill_length_mm, y = bill_depth_mm,
-      indicator = species, indicator2 = sex,
+      cat = species, cat2 = sex,
       color = species, shape = sex) +
   geom_point() +
-  geom_lm_indicator2() +
-  geom_lm_indicator2_conf_int() +
-* geom_lm_indicator2_residuals()
+  geom_lm_cat2() +
+  geom_lm_cat2_conf_int() +
+* geom_lm_cat2_residuals()
 ```
 ]
  
@@ -1076,13 +1076,13 @@ count: false
 ```r
 ggplot(palmerpenguins::penguins) +
   aes(x = bill_length_mm, y = bill_depth_mm,
-      indicator = species, indicator2 = sex,
+      cat = species, cat2 = sex,
       color = species, shape = sex) +
   geom_point() +
-  geom_lm_indicator2() +
-  geom_lm_indicator2_conf_int() +
-  geom_lm_indicator2_residuals() +
-* geom_lm_indicator2_fitted()
+  geom_lm_cat2() +
+  geom_lm_cat2_conf_int() +
+  geom_lm_cat2_residuals() +
+* geom_lm_cat2_fitted()
 ```
 ]
  
@@ -1099,14 +1099,14 @@ count: false
 ```r
 ggplot(palmerpenguins::penguins) +
   aes(x = bill_length_mm, y = bill_depth_mm,
-      indicator = species, indicator2 = sex,
+      cat = species, cat2 = sex,
       color = species, shape = sex) +
   geom_point() +
-  geom_lm_indicator2() +
-  geom_lm_indicator2_conf_int() +
-  geom_lm_indicator2_residuals() +
-  geom_lm_indicator2_fitted() +
-* geom_lm_indicator2_formula()
+  geom_lm_cat2() +
+  geom_lm_cat2_conf_int() +
+  geom_lm_cat2_residuals() +
+  geom_lm_cat2_fitted() +
+* geom_lm_cat2_formula()
 ```
 ]
  
@@ -1123,15 +1123,15 @@ count: false
 ```r
 ggplot(palmerpenguins::penguins) +
   aes(x = bill_length_mm, y = bill_depth_mm,
-      indicator = species, indicator2 = sex,
+      cat = species, cat2 = sex,
       color = species, shape = sex) +
   geom_point() +
-  geom_lm_indicator2() +
-  geom_lm_indicator2_conf_int() +
-  geom_lm_indicator2_residuals() +
-  geom_lm_indicator2_fitted() +
-  geom_lm_indicator2_formula() +
-* geom_lm_indicator2_rsquared()
+  geom_lm_cat2() +
+  geom_lm_cat2_conf_int() +
+  geom_lm_cat2_residuals() +
+  geom_lm_cat2_fitted() +
+  geom_lm_cat2_formula() +
+* geom_lm_cat2_rsquared()
 ```
 ]
  
@@ -1148,15 +1148,15 @@ count: false
 ```r
 ggplot(palmerpenguins::penguins) +
   aes(x = bill_length_mm, y = bill_depth_mm,
-      indicator = species, indicator2 = sex,
+      cat = species, cat2 = sex,
       color = species, shape = sex) +
   geom_point() +
-  geom_lm_indicator2() +
-  geom_lm_indicator2_conf_int() +
-  geom_lm_indicator2_residuals() +
-  geom_lm_indicator2_fitted() +
-  geom_lm_indicator2_formula() +
-  geom_lm_indicator2_rsquared() +
+  geom_lm_cat2() +
+  geom_lm_cat2_conf_int() +
+  geom_lm_cat2_residuals() +
+  geom_lm_cat2_fitted() +
+  geom_lm_cat2_formula() +
+  geom_lm_cat2_rsquared() +
 * NULL
 ```
 ]
@@ -1221,7 +1221,7 @@ count: false
 
 ```r
 last_plot() +
-* geom_lm_indicator2_intercept(color = "blue")
+* geom_lm_cat2_intercept(color = "blue")
 ```
 ]
  
@@ -1237,8 +1237,8 @@ count: false
 
 ```r
 last_plot() +
-  geom_lm_indicator2_intercept(color = "blue") +
-* geom_lm_indicator2_intercept_label(hjust = -.2)
+  geom_lm_cat2_intercept(color = "blue") +
+* geom_lm_cat2_intercept_label(hjust = -.2)
 ```
 ]
  

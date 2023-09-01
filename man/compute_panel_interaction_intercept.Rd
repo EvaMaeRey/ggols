@@ -9,16 +9,13 @@ compute_panel_interaction_intercept(data, scales)
 \arguments{
 \item{scales}{}
 }
-\value{
-
-}
 \description{
 Title
 }
 \examples{
 library(tidyverse)
 cars \%>\%
-mutate(indicator = dist > 50) \%>\%
+mutate(cat = dist > 50) \%>\%
   rename(x = speed,
          y = dist) \%>\%
   compute_panel_interaction_intercept()

@@ -5,7 +5,7 @@ StatOlsconfintint <- ggplot2::ggproto("StatOlsconfintint",
                                                                level = .95,
                                                                num_breaks = 100) {
 
-                                        model <- lm(y ~ x * indicator,
+                                        model <- lm(y ~ x * cat,
                                                     data = data)
 
                                         new_x_df <- seq(min(data$x), max(data$x),
@@ -28,11 +28,11 @@ StatOlsconfintint <- ggplot2::ggproto("StatOlsconfintint",
                                                    ymin = predict_df[,2],
                                                    ymax = predict_df[,3],
                                                    alpha = .3,
-                                                   indicator = data$indicator)
+                                                   cat = data$cat)
                                       },
 
-                                      required_aes = c("x", "y", "indicator"),
-                                      default_aes = ggplot2::aes(group = ggplot2::after_stat(indicator))
+                                      required_aes = c("x", "y", "cat"),
+                                      default_aes = ggplot2::aes(group = ggplot2::after_stat(cat))
 )
 
 
@@ -51,7 +51,7 @@ StatOlsconfintint <- ggplot2::ggproto("StatOlsconfintint",
 #'
 #' @examples
 #' library(ggplot2)
-#' ggplot(cars) + aes(x = speed, y = dist, indicator = dist > 40) +
+#' ggplot(cars) + aes(x = speed, y = dist, cat = dist > 40) +
 #' geom_point() + geom_lm_interaction() + geom_lm_interaction_conf_int(level = .8)
 geom_lm_interaction_conf_int <- function(mapping = NULL, data = NULL,
                                        position = "identity", na.rm = FALSE, show.legend = NA,
@@ -80,17 +80,17 @@ geom_lm_interaction_conf_int <- function(mapping = NULL, data = NULL,
 #' @examples
 #' library(tidyverse)
 #' cars %>%
-#' mutate(indicator = dist > 50) %>%
+#' mutate(cat = dist > 50) %>%
 #'   rename(x = speed,
 #'          y = dist) %>%
 #'   compute_panel_interaction_intercept()
 compute_panel_interaction_intercept <- function(data, scales) {
 
-  model <- lm(y ~ x * indicator,
+  model <- lm(y ~ x * cat,
               data = data)
 
-  new_x_df <- data.frame(indicator =
-                           unique(data$indicator),
+  new_x_df <- data.frame(cat =
+                           unique(data$cat),
                          x = 0)
   predict(model,
           newdata = new_x_df,
@@ -98,7 +98,7 @@ compute_panel_interaction_intercept <- function(data, scales) {
   ) %>%
     data.frame(y = .,
                x = 0,
-               indicator = unique(data$indicator)) %>%
+               cat = unique(data$cat)) %>%
     mutate(label = paste0("(0, ", y %>% good_digits(),")" ))
 
 
@@ -107,8 +107,8 @@ compute_panel_interaction_intercept <- function(data, scales) {
 StatOlsinterceptint <- ggplot2::ggproto("StatOlsinterceptint",
                                         ggplot2::Stat,
                                         compute_panel = compute_panel_interaction_intercept,
-                                        required_aes = c("x", "y", "indicator"),
-                                        default_aes = ggplot2::aes(group = after_stat(indicator))
+                                        required_aes = c("x", "y", "cat"),
+                                        default_aes = ggplot2::aes(group = after_stat(cat))
 )
 
 
@@ -129,7 +129,7 @@ StatOlsinterceptint <- ggplot2::ggproto("StatOlsinterceptint",
 #' @examples
 #' library(ggplot2)
 #' ggplot(cars) +
-#' aes(x = speed, y = dist, indicator = dist > 30,
+#' aes(x = speed, y = dist, cat = dist > 30,
 #' color = dist > 30) +
 #' geom_point() +
 #' geom_lm_interaction() +

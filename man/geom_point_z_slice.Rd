@@ -17,9 +17,6 @@ geom_point_z_slice(
 \arguments{
 \item{...}{}
 }
-\value{
-
-}
 \description{
 Title
 }

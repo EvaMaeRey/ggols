@@ -5,7 +5,7 @@ StatOlsconfintind2 <- ggplot2::ggproto("StatOlsconfintind2",
                                                             level = .95,
                                                             num_breaks = 100) {
 
-                                     model <- lm(y ~ x + indicator + indicator2,
+                                     model <- lm(y ~ x + cat + cat2,
                                                  data = data)
 
                                      new_x_df <- seq(min(data$x), max(data$x),
@@ -28,12 +28,12 @@ StatOlsconfintind2 <- ggplot2::ggproto("StatOlsconfintind2",
                                                 ymin = predict_df[,2],
                                                 ymax = predict_df[,3],
                                                 alpha = .3,
-                                                indicator = data$indicator,
-                                                indicator2 = data$indicator2)
+                                                cat = data$cat,
+                                                cat2 = data$cat2)
                                    },
 
-                                   required_aes = c("x", "y", "indicator"),
-                                   default_aes = ggplot2::aes(group = ggplot2::after_stat(paste(indicator, indicator2)))
+                                   required_aes = c("x", "y", "cat"),
+                                   default_aes = ggplot2::aes(group = ggplot2::after_stat(paste(cat, cat2)))
 )
 
 
@@ -52,9 +52,9 @@ StatOlsconfintind2 <- ggplot2::ggproto("StatOlsconfintind2",
 #'
 #' @examples
 #' library(ggplot2)
-#' ggplot(cars) + aes(x = speed, y = dist, indicator = dist > 40) +
-#' geom_point() + geom_lm_indicator() + geom_lm_indicator_conf_int(level = .8)
-geom_lm_indicator2_conf_int <- function(mapping = NULL, data = NULL,
+#' ggplot(cars) + aes(x = speed, y = dist, cat = dist > 40) +
+#' geom_point() + geom_lm_cat() + geom_lm_cat_conf_int(level = .8)
+geom_lm_cat2_conf_int <- function(mapping = NULL, data = NULL,
                              position = "identity", na.rm = FALSE, show.legend = NA,
                              inherit.aes = TRUE, ...) {
   ggplot2::layer(
@@ -81,18 +81,18 @@ geom_lm_indicator2_conf_int <- function(mapping = NULL, data = NULL,
 #' @examples
 #' library(tidyverse)
 #' cars %>%
-#' mutate(indicator = dist > 50) %>%
+#' mutate(cat = dist > 50) %>%
 #'   rename(x = speed,
 #'          y = dist) %>%
-#'   compute_panel_indicator_intercept()
-compute_panel_indicator2_intercept <- function(data, scales) {
+#'   compute_panel_cat_intercept()
+compute_panel_cat2_intercept <- function(data, scales) {
 
-  model <- lm(y ~ x + indicator + indicator2,
+  model <- lm(y ~ x + cat + cat2,
               data = data)
 
-  new_x_df <- data.frame(indicator =
-                           unique(data$indicator)) %>%
-              crossing(indicator2 = unique(data$indicator2)) %>%
+  new_x_df <- data.frame(cat =
+                           unique(data$cat)) %>%
+              crossing(cat2 = unique(data$cat2)) %>%
                          mutate(x = 0)
   predict(model,
           newdata = new_x_df,
@@ -100,7 +100,7 @@ compute_panel_indicator2_intercept <- function(data, scales) {
   ) %>%
     data.frame(y = .,
                x = 0,
-               indicator = unique(data$indicator)) %>%
+               cat = unique(data$cat)) %>%
     mutate(label = paste0("(0, ", y %>% good_digits(),")" ))
 
 
@@ -108,9 +108,9 @@ compute_panel_indicator2_intercept <- function(data, scales) {
 
 StatOlsinterceptind2 <- ggplot2::ggproto("StatOlsinterceptind",
                                       ggplot2::Stat,
-                                      compute_panel = compute_panel_indicator2_intercept,
-                                      required_aes = c("x", "y", "indicator"),
-                                      default_aes = ggplot2::aes(group = after_stat(paste(indicator)))
+                                      compute_panel = compute_panel_cat2_intercept,
+                                      required_aes = c("x", "y", "cat"),
+                                      default_aes = ggplot2::aes(group = after_stat(paste(cat)))
 )
 
 
@@ -131,18 +131,18 @@ StatOlsinterceptind2 <- ggplot2::ggproto("StatOlsinterceptind",
 #' @examples
 #' library(ggplot2)
 #' ggplot(cars) +
-#' aes(x = speed, y = dist, indicator = dist > 30,
+#' aes(x = speed, y = dist, cat = dist > 30,
 #' color = dist > 30) +
 #' geom_point() +
-#' geom_lm_indicator() +
-#' geom_lm_indicator_intercept(color = "blue") +
-#' geom_lm_indicator_intercept_label(hjust = -.2) +
-#' geom_lm_indicator_conf_int() +
-#' geom_lm_indicator_residuals() +
-#' geom_lm_indicator_fitted() +
-#' geom_lm_indicator_formula() +
-#' geom_lm_indicator_rsquared()
-geom_lm_indicator2_intercept <- function(mapping = NULL, data = NULL,
+#' geom_lm_cat() +
+#' geom_lm_cat_intercept(color = "blue") +
+#' geom_lm_cat_intercept_label(hjust = -.2) +
+#' geom_lm_cat_conf_int() +
+#' geom_lm_cat_residuals() +
+#' geom_lm_cat_fitted() +
+#' geom_lm_cat_formula() +
+#' geom_lm_cat_rsquared()
+geom_lm_cat2_intercept <- function(mapping = NULL, data = NULL,
                               position = "identity", na.rm = FALSE, show.legend = NA,
                               inherit.aes = TRUE, ...) {
   ggplot2::layer(
@@ -167,7 +167,7 @@ geom_lm_indicator2_intercept <- function(mapping = NULL, data = NULL,
 #' @export
 #'
 #' @examples
-geom_lm_indicator2_intercept_label <- function(mapping = NULL, data = NULL,
+geom_lm_cat2_intercept_label <- function(mapping = NULL, data = NULL,
                                         position = "identity", na.rm = FALSE, show.legend = NA,
                                         inherit.aes = TRUE, ...) {
   ggplot2::layer(

@@ -17,9 +17,6 @@ geom_lm_interaction_formula(
 \arguments{
 \item{...}{}
 }
-\value{
-
-}
 \description{
 Title
 }

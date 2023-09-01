@@ -17,9 +17,6 @@ geom_lm_interaction_fitted(
 \arguments{
 \item{...}{}
 }
-\value{
-
-}
 \description{
 Title
 }

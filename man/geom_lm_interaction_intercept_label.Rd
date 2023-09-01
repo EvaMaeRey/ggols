@@ -17,9 +17,6 @@ geom_lm_interaction_intercept_label(
 \arguments{
 \item{...}{}
 }
-\value{
-
-}
 \description{
 Title
 }

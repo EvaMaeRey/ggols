@@ -17,9 +17,6 @@ geom_lm_squared_fitted(
 \arguments{
 \item{...}{}
 }
-\value{
-
-}
 \description{
 Title
 }

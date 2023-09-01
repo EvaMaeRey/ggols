@@ -1,8 +1,6 @@
-compute_panel_ols_ind_label <- function(data,
-                                        scales,
-                                        formula = y ~ x + indicator) {
+compute_panel_ols_ind2_label <- function(data, scales) {
 
-  model <- lm(formula = formula,
+  model <- lm(y ~ x + cat + cat2,
               data = data)
 
   data.frame(names = model[[1]] %>% names(),
@@ -22,8 +20,7 @@ compute_panel_ols_ind_label <- function(data,
                             "x + ",
                             dummies,
                             " + ",
-                            model$coefficients[1] %>%
-                              good_digits()
+                            model$coefficients[1] %>% good_digits()
 
              ) %>%
                stringr::str_wrap(50)
@@ -34,10 +31,10 @@ compute_panel_ols_ind_label <- function(data,
 
 
 
-StatOlsindformula <- ggplot2::ggproto("StatOlsindformula",
+StatOlsind2formula <- ggplot2::ggproto("StatOlsind2formula",
                                       ggplot2::Stat,
-                                      compute_panel = compute_panel_ols_ind_label,
-                                      required_aes = c("x", "y", "indicator")
+                                      compute_panel = compute_panel_ols_ind2_label,
+                                      required_aes = c("x", "y", "cat", "cat2")
 )
 
 
@@ -55,11 +52,11 @@ StatOlsindformula <- ggplot2::ggproto("StatOlsindformula",
 #' @export
 #'
 #' @examples
-geom_lm_indicator_formula <- function(mapping = NULL, data = NULL,
+geom_lm_cat2_formula <- function(mapping = NULL, data = NULL,
                                         position = "identity", na.rm = FALSE, show.legend = NA,
                                         inherit.aes = TRUE, ...) {
   ggplot2::layer(
-    stat = StatOlsindformula, geom = ggplot2::GeomLabel, data = data, mapping = mapping,
+    stat = StatOlsind2formula, geom = ggplot2::GeomLabel, data = data, mapping = mapping,
     position = position, show.legend = show.legend, inherit.aes = inherit.aes,
     params = list(na.rm = na.rm, ...)
   )
@@ -80,13 +77,12 @@ geom_lm_indicator_formula <- function(mapping = NULL, data = NULL,
 #' ###### R-squared
 #' library(tidyverse)
 #' cars %>%
-#'   mutate(indicator = dist>15) %>%
+#'   mutate(cat = dist>15) %>%
 #'   rename(x = speed, y = dist) %>%
-#'   compute_panel_ols_ind_rsquared()
-compute_panel_ols_ind_rsquared <- function(data, scales,
-                                           formula = y ~ x + indicator) {
+#'   compute_panel_ols_cat_rsquared()
+compute_panel_ols_ind2_rsquared <- function(data, scales) {
 
-  model <- lm(formula = formula,
+  model <- lm(y ~ x + cat + cat2,
               data = data)
 
   data.frame(x = mean(data$x),
@@ -96,10 +92,10 @@ compute_panel_ols_ind_rsquared <- function(data, scales,
 
 }
 
-StatOlsindrsquared <- ggplot2::ggproto("StatOlsindrsquared",
+StatOlsind2rsquared <- ggplot2::ggproto("StatOlsindrsquared",
                                       ggplot2::Stat,
-                                      compute_panel = compute_panel_ols_ind_rsquared,
-                                      required_aes = c("x", "y", "indicator")
+                                      compute_panel = compute_panel_ols_ind2_rsquared,
+                                      required_aes = c("x", "y", "cat", "cat2")
                                       )
 
 
@@ -117,11 +113,11 @@ StatOlsindrsquared <- ggplot2::ggproto("StatOlsindrsquared",
 #' @export
 #'
 #' @examples
-geom_lm_indicator_rsquared <- function(mapping = NULL, data = NULL,
+geom_lm_cat2_rsquared <- function(mapping = NULL, data = NULL,
                                         position = "identity", na.rm = FALSE, show.legend = NA,
                                         inherit.aes = TRUE, ...) {
   ggplot2::layer(
-    stat = StatOlsindrsquared, geom = ggplot2::GeomLabel, data = data, mapping = mapping,
+    stat = StatOlsind2rsquared, geom = ggplot2::GeomLabel, data = data, mapping = mapping,
     position = position, show.legend = show.legend, inherit.aes = inherit.aes,
     params = list(na.rm = na.rm, ...)
   )

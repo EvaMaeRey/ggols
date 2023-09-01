@@ -17,9 +17,6 @@ geom_lm_interaction_rsquared(
 \arguments{
 \item{...}{}
 }
-\value{
-
-}
 \description{
 Title
 }

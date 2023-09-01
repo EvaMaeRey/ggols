@@ -17,9 +17,6 @@ geom_lm_rsquared(
 \arguments{
 \item{...}{}
 }
-\value{
-
-}
 \description{
 Title
 }

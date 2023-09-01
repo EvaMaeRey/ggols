@@ -18,7 +18,7 @@
 geom_lm_interaction_formula <- function(mapping = NULL, data = NULL,
                                         position = "identity", na.rm = FALSE, show.legend = NA,
                                         inherit.aes = TRUE, ...) {
-  geom_lm_indicator_formula(formula = y ~ x*indicator,
+  geom_lm_cat_formula(formula = y ~ x*cat,
                               mapping = mapping,
                               data = data,
                               position = "identity",
@@ -49,7 +49,7 @@ geom_lm_interaction_formula <- function(mapping = NULL, data = NULL,
 geom_lm_interaction_rsquared <- function(mapping = NULL, data = NULL,
                                         position = "identity", na.rm = FALSE, show.legend = NA,
                                         inherit.aes = TRUE, ...) {
-  geom_lm_indicator_rsquared(formula = y ~ x*indicator,
+  geom_lm_cat_rsquared(formula = y ~ x*cat,
                             mapping = mapping,
                             data = data,
                             position = "identity",

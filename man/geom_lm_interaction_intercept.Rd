@@ -17,16 +17,13 @@ geom_lm_interaction_intercept(
 \arguments{
 \item{...}{}
 }
-\value{
-
-}
 \description{
 Intercept
 }
 \examples{
 library(ggplot2)
 ggplot(cars) +
-aes(x = speed, y = dist, indicator = dist > 30,
+aes(x = speed, y = dist, cat = dist > 30,
 color = dist > 30) +
 geom_point() +
 geom_lm_interaction() +

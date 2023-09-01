@@ -1,22 +1,22 @@
 compute_panel_ols_ind2 <- function(data, scales) {
 
-  model <- lm(y ~ x + indicator + indicator2,
+  model <- lm(y ~ x + cat + cat2,
               data = data)
 
   data.frame(x = data$x,
              y = model$fitted.values,
-             indicator = data$indicator,
-             indicator2 = data$indicator2,
+             cat = data$cat,
+             cat2 = data$cat2,
              xend = data$x,
              yend = data$y)
 
 }
 
-StatLmindicator2 <- ggplot2::ggproto("StatLmindicator2",
+StatLmcat2 <- ggplot2::ggproto("StatLmcat2",
                                       ggplot2::Stat,
                                       compute_panel = compute_panel_ols_ind2,
-                                      required_aes = c("x", "y", "indicator", "indicator2"),
-                                      default_aes = ggplot2::aes(group = ggplot2::after_stat(paste(indicator, indicator2)))
+                                      required_aes = c("x", "y", "cat", "cat2"),
+                                      default_aes = ggplot2::aes(group = ggplot2::after_stat(paste(cat, cat2)))
 )
 
 #' Title
@@ -33,12 +33,12 @@ StatLmindicator2 <- ggplot2::ggproto("StatLmindicator2",
 #' @export
 #'
 #' @examples
-geom_lm_indicator2 <- function(mapping = NULL, data = NULL,
+geom_lm_cat2 <- function(mapping = NULL, data = NULL,
                                 position = "identity", na.rm = FALSE,
                                 show.legend = NA,
                                 inherit.aes = TRUE, ...) {
   ggplot2::layer(
-    stat = StatLmindicator2, # proto object from Step 2
+    stat = StatLmcat2, # proto object from Step 2
     geom = ggplot2::GeomLine, # inherit other behavior
     data = data,
     mapping = mapping,
@@ -64,12 +64,12 @@ geom_lm_indicator2 <- function(mapping = NULL, data = NULL,
 #' @export
 #'
 #' @examples
-geom_lm_indicator2_fitted <- function(mapping = NULL, data = NULL,
+geom_lm_cat2_fitted <- function(mapping = NULL, data = NULL,
                                        position = "identity", na.rm = FALSE,
                                        show.legend = NA,
                                        inherit.aes = TRUE, ...) {
   ggplot2::layer(
-    stat = StatLmindicator2, # proto object from Step 2
+    stat = StatLmcat2, # proto object from Step 2
     geom = ggplot2::GeomPoint, # inherit other behavior
     data = data,
     mapping = mapping,
@@ -95,12 +95,12 @@ geom_lm_indicator2_fitted <- function(mapping = NULL, data = NULL,
 #' @export
 #'
 #' @examples
-geom_lm_indicator2_residuals <- function(mapping = NULL, data = NULL,
+geom_lm_cat2_residuals <- function(mapping = NULL, data = NULL,
                                        position = "identity", na.rm = FALSE,
                                        show.legend = NA,
                                        inherit.aes = TRUE, ...) {
   ggplot2::layer(
-    stat = StatLmindicator2, # proto object from Step 2
+    stat = StatLmcat2, # proto object from Step 2
     geom = ggplot2::GeomSegment, # inherit other behavior
     data = data,
     mapping = mapping,
@@ -130,18 +130,18 @@ geom_lm_indicator2_residuals <- function(mapping = NULL, data = NULL,
 #'   aes(x = flipper_length_mm ) +
 #'   aes(y = body_mass_g ) +
 #'   geom_point() + aes(color = species) +
-#'   aes(indicator = species) +
-#'   geom_lm_indicator() +
-#'   geom_lm_indicator_formula() +
-#'   geom_lm_indicator_fitted(color = "blue") +
-#'   geom_lm_indicator_residuals(color = "red") +
-#'   geom_lm_indicator_rsquared()
-geom_lm_indicator2_residuals <- function(mapping = NULL, data = NULL,
+#'   aes(cat = species) +
+#'   geom_lm_cat() +
+#'   geom_lm_cat_formula() +
+#'   geom_lm_cat_fitted(color = "blue") +
+#'   geom_lm_cat_residuals(color = "red") +
+#'   geom_lm_cat_rsquared()
+geom_lm_cat2_residuals <- function(mapping = NULL, data = NULL,
                                        position = "identity", na.rm = FALSE,
                                        show.legend = NA,
                                        inherit.aes = TRUE, ...) {
   ggplot2::layer(
-    stat = StatLmindicator2, # proto object from Step 2
+    stat = StatLmcat2, # proto object from Step 2
     geom = ggplot2::GeomSegment, # inherit other behavior
     data = data,
     mapping = mapping,

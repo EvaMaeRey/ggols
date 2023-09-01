@@ -17,14 +17,11 @@ geom_lm_interaction_conf_int(
 \arguments{
 \item{...}{}
 }
-\value{
-
-}
 \description{
 Drawing prediction interval for OLS linear model
 }
 \examples{
 library(ggplot2)
-ggplot(cars) + aes(x = speed, y = dist, indicator = dist > 40) +
+ggplot(cars) + aes(x = speed, y = dist, cat = dist > 40) +
 geom_point() + geom_lm_interaction() + geom_lm_interaction_conf_int(level = .8)
 }
